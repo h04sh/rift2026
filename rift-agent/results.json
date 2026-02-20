@@ -1,0 +1,185 @@
+{
+    "run_id": "e3a2f4b1-9c5d-4e7a-b8c2-1d6f3a9e7b4c",
+    "repo_url": "https://github.com/example/buggy-python-app",
+    "team_name": "RIFT_ORGANISERS",
+    "leader_name": "SAIYAM_KUMAR",
+    "branch_name": "RIFT_ORGANISERS_SAIYAM_KUMAR_AI_Fix",
+    "commit_sha": "a3f9c21e841d7b4c9e0f2d8a5b3c7e1d9a4f6b2",
+    "pr_url": "https://github.com/example/buggy-python-app/pull/42",
+    "language": "python",
+    "status": "success",
+    "started_at": "2026-02-19T14:30:00.000Z",
+    "finished_at": "2026-02-19T14:34:22.480Z",
+    "duration_seconds": 262.48,
+    "retry_count": 1,
+    "retry_limit": 5,
+    "test_summary": {
+        "total_tests": 12,
+        "tests_passed": 11,
+        "tests_failed": 1
+    },
+    "failures": [
+        {
+            "bug_type": "LINTING",
+            "file": "src/utils.py",
+            "line": 15,
+            "message": "F401 'os' imported but unused"
+        },
+        {
+            "bug_type": "SYNTAX",
+            "file": "src/validator.py",
+            "line": 8,
+            "message": "SyntaxError: expected ':'"
+        },
+        {
+            "bug_type": "INDENTATION",
+            "file": "src/processor.py",
+            "line": 42,
+            "message": "IndentationError: unexpected indent"
+        },
+        {
+            "bug_type": "TYPE_ERROR",
+            "file": "src/models.py",
+            "line": 97,
+            "message": "TypeError: can only concatenate str (not int) to str"
+        },
+        {
+            "bug_type": "IMPORT",
+            "file": "src/api.py",
+            "line": 3,
+            "message": "ModuleNotFoundError: No module named 'requests_toolbelt'"
+        }
+    ],
+    "fixes": [
+        {
+            "bug_type": "LINTING",
+            "file": "src/utils.py",
+            "line": 15,
+            "fix_description": "remove the import statement",
+            "patch": "- import os\n",
+            "status": "applied"
+        },
+        {
+            "bug_type": "SYNTAX",
+            "file": "src/validator.py",
+            "line": 8,
+            "fix_description": "add the colon at the correct position",
+            "patch": "+ def validate(data):\n",
+            "status": "applied"
+        },
+        {
+            "bug_type": "INDENTATION",
+            "file": "src/processor.py",
+            "line": 42,
+            "fix_description": "fix indentation to use 4 spaces consistently",
+            "patch": "+     result = process(data)\n",
+            "status": "applied"
+        },
+        {
+            "bug_type": "TYPE_ERROR",
+            "file": "src/models.py",
+            "line": 97,
+            "fix_description": "convert integer to string before concatenation",
+            "patch": "+ message = 'ID: ' + str(user_id)\n",
+            "status": "applied"
+        },
+        {
+            "bug_type": "IMPORT",
+            "file": "src/api.py",
+            "line": 3,
+            "fix_description": "replace with correct import from requests library",
+            "patch": "- from requests_toolbelt import MultipartEncoder\n+ from requests import Request\n",
+            "status": "applied"
+        }
+    ],
+    "fixes_formatted_output": [
+        "LINTING error in src/utils.py line 15 → Fix: remove the import statement",
+        "SYNTAX error in src/validator.py line 8 → Fix: add the colon at the correct position",
+        "INDENTATION error in src/processor.py line 42 → Fix: fix indentation to use 4 spaces consistently",
+        "TYPE_ERROR error in src/models.py line 97 → Fix: convert integer to string before concatenation",
+        "IMPORT error in src/api.py line 3 → Fix: replace with correct import from requests library"
+    ],
+    "score": {
+        "tests_passed_pct": 91.7,
+        "fixes_applied": 5,
+        "fix_quality_score": 40.0,
+        "ci_success_bonus": 20.0,
+        "total_score": 97.33
+    },
+    "cicd_timeline": [
+        {
+            "timestamp": "2026-02-19T14:30:00.000Z",
+            "event": "clone_started",
+            "detail": "Cloning https://github.com/example/buggy-python-app",
+            "status": "running"
+        },
+        {
+            "timestamp": "2026-02-19T14:30:08.120Z",
+            "event": "clone_success",
+            "detail": "Repository cloned. Detected language: python",
+            "status": "success"
+        },
+        {
+            "timestamp": "2026-02-19T14:30:08.900Z",
+            "event": "analysis_started",
+            "detail": "Running python tests",
+            "status": "running"
+        },
+        {
+            "timestamp": "2026-02-19T14:30:42.300Z",
+            "event": "analysis_complete",
+            "detail": "Found 5 failure(s). 7/12 tests passed.",
+            "status": "failure"
+        },
+        {
+            "timestamp": "2026-02-19T14:30:42.800Z",
+            "event": "fix_started",
+            "detail": "Generating AI fixes for 5 failure(s)",
+            "status": "running"
+        },
+        {
+            "timestamp": "2026-02-19T14:31:30.200Z",
+            "event": "fix_complete",
+            "detail": "Applied 5/5 fix(es) successfully",
+            "status": "success"
+        },
+        {
+            "timestamp": "2026-02-19T14:31:30.500Z",
+            "event": "git_started",
+            "detail": "Creating branch: RIFT_ORGANISERS_SAIYAM_KUMAR_AI_Fix",
+            "status": "running"
+        },
+        {
+            "timestamp": "2026-02-19T14:31:38.900Z",
+            "event": "git_pushed",
+            "detail": "Pushed 5 fix(es) to branch RIFT_ORGANISERS_SAIYAM_KUMAR_AI_Fix (SHA: a3f9c21)",
+            "status": "success"
+        },
+        {
+            "timestamp": "2026-02-19T14:31:44.000Z",
+            "event": "cicd_polling_started",
+            "detail": "Polling GitHub Actions",
+            "status": "running"
+        },
+        {
+            "timestamp": "2026-02-19T14:32:10.000Z",
+            "event": "cicd_in_progress",
+            "detail": "Workflow run 9876543 – status: in_progress",
+            "status": "running"
+        },
+        {
+            "timestamp": "2026-02-19T14:34:02.000Z",
+            "event": "cicd_completed",
+            "detail": "Workflow run 9876543 – status: completed, conclusion: success",
+            "status": "success"
+        },
+        {
+            "timestamp": "2026-02-19T14:34:22.400Z",
+            "event": "score_calculated",
+            "detail": "Score: 97.33/100 | Tests: 36.7/40 | Fix Quality: 40.0/40 | CI Bonus: 20/20",
+            "status": "success"
+        }
+    ],
+    "cicd_status": "success",
+    "error_message": null
+}
